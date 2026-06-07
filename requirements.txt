@@ -1,0 +1,9 @@
+requests
+pandas
+snowflake-connector-python
+snowflake-sqlalchemy
+sqlalchemy
+apache-airflow
+dbt-core
+dbt-snowflake
+python-dotenv
