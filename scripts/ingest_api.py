@@ -219,7 +219,7 @@ def main():
 
     load_to_snowflake(carts_df, products_df)
 
-    print("🎉 Ingestion completed successfully!")
+    print("Ingestion completed successfully!")
 
 # -------------------------------
 # RUN
