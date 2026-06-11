@@ -1,5 +1,4 @@
-Retail-Sales-Analytics-Data-Pipeline
-
+**Retail-Sales-Analytics-Data-Pipeline**
 
 End-to-End Data Engineering Pipeline using Airflow, Snowflake, and dbt
 
