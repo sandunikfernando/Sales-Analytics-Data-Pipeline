@@ -165,10 +165,9 @@ def load_to_snowflake(carts_df, products_df):
     conn = None
 
     try:
-        print("🔗 Connecting to Snowflake...")
+        print("Connecting to Snowflake...")
         conn = get_snowflake_connection()
 
-        # 🔥 FIX: enforce Snowflake-compatible schema
         carts_df.columns = carts_df.columns.str.upper()
         products_df.columns = products_df.columns.str.upper()
 
@@ -216,7 +215,6 @@ def main():
     carts_df, products_df = transform_data(data, load_timestamp)
 
     validate_schema(carts_df, products_df)
-
     load_to_snowflake(carts_df, products_df)
 
     print("Ingestion completed successfully!")
@@ -227,3 +225,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
