@@ -11,7 +11,7 @@ from scripts.ingest_api import main
 with DAG(
     dag_id="retail_sales_pipeline",
     start_date=datetime(2025, 1, 1),
-    schedule="@daily",
+    schedule="0 6 * * *", # Runs daily at 6:00 AM UTC
     catchup=False,
     tags=["retail", "snowflake", "sales"]
 ) as dag:
