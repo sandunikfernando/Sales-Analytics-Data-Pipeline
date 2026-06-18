@@ -1,39 +1,63 @@
+# version: 2
+
+# models:
+
+#   - name: dim_product
+
+#     columns:
+
+#       - name: product_id
+
+#         tests:
+#           - unique
+#           - not_null
+
+#   - name: dim_user
+
+#     columns:
+
+#       - name: user_id
+
+#         tests:
+#           - unique
+#           - not_null
+
+#   - name: fct_cart_items
+
+#     columns:
+
+#       - name: cart_id
+
+#         tests:
+#           - not_null
+
+#       - name: product_id
+
+#         tests:
+#           - relationships:
+#               to: ref('dim_product')
+#               field: product_id
+
+
+
 version: 2
 
 models:
 
   - name: dim_product
 
+    description: Product dimension containing unique products from cart transactions.
+
     columns:
 
       - name: product_id
+
+        description: Unique product identifier.
 
         tests:
           - unique
           - not_null
 
-  - name: dim_user
+      - name: product_name
 
-    columns:
-
-      - name: user_id
-
-        tests:
-          - unique
-          - not_null
-
-  - name: fct_cart_items
-
-    columns:
-
-      - name: cart_id
-
-        tests:
-          - not_null
-
-      - name: product_id
-
-        tests:
-          - relationships:
-              to: ref('dim_product')
-              field: product_id
+        description: Product title from source API.
