@@ -1,6 +1,7 @@
 select
 
     cast(p.cart_id as integer) as cart_id,
+    cast(c.user_id as integer) as user_id,
     cast(p.product_id as integer) as product_id,
     p.product_name,
     cast(p.price as decimal(10,2)) as price,
