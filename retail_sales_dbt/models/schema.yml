@@ -2,20 +2,62 @@ version: 2
 
 models:
 
+  # -------------------------
+  # DIM PRODUCT
+  # -------------------------
   - name: dim_product
-
     description: Product dimension containing unique products from cart transactions.
 
     columns:
-
       - name: product_id
-
         description: Unique product identifier.
-
         tests:
           - unique
           - not_null
 
       - name: product_name
-
         description: Product title from source API.
+
+      - name: price
+        description: Product price.
+
+  # -------------------------
+  # DIM USER
+  # -------------------------
+  - name: dim_user
+    description: User dimension extracted from cart data.
+
+    columns:
+      - name: user_id
+        description: Unique user identifier.
+        tests:
+          - unique
+          - not_null
+
+  # -------------------------
+  # FACT CART ITEMS
+  # -------------------------
+  - name: fct_cart_items
+    description: Fact table containing cart-level transactional item data.
+
+    columns:
+      - name: cart_id
+        tests:
+          - not_null
+
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: user_id
+        tests:
+          - not_null
+
+      - name: gross_sales
+        description: Total sales before discount.
+
+      - name: net_sales
+        description: Total sales after discount.
+
+      - name: discount_amount
+        description: Difference between gross and net sales.
