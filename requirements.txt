@@ -7,3 +7,4 @@ apache-airflow
 dbt-core
 dbt-snowflake
 python-dotenv
+astronomer-cosmos
