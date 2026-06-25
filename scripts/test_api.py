@@ -1,17 +1,8 @@
-# import requests
-
-# url = "https://dummyjson.com/carts"
-
-# response = requests.get(url)
-# print(response.status_code)
-# data = response.json()
-# print(data.keys())
-
-
-
 import requests
 import json
+import os
 
-response = requests.get("https://dummyjson.com/carts")
+API_URL = os.getenv("API_URL")
+response = requests.get(API_URL)
 data = response.json()
 print(json.dumps(data["carts"][0], indent=4))
