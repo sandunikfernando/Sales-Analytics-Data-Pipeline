@@ -2,7 +2,6 @@ import os
 import logging
 import requests
 import pandas as pd
-# # from config import API_URL
 
 
 from datetime import datetime, timezone
