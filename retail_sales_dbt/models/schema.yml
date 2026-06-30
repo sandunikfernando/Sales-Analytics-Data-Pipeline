@@ -2,9 +2,7 @@ version: 2
 
 models:
 
-  # -------------------------
   # DIM PRODUCT
-  # -------------------------
   - name: dim_product
     description: Product dimension containing unique products from cart transactions.
 
@@ -21,9 +19,7 @@ models:
       - name: price
         description: Product price.
 
-  # -------------------------
   # DIM USER
-  # -------------------------
   - name: dim_user
     description: User dimension extracted from cart data.
 
@@ -34,9 +30,7 @@ models:
           - unique
           - not_null
 
-  # -------------------------
   # FACT CART ITEMS
-  # -------------------------
   - name: fct_cart_items
     description: Fact table containing cart-level transactional item data.
 
@@ -61,3 +55,5 @@ models:
 
       - name: discount_amount
         description: Difference between gross and net sales.
+
+        

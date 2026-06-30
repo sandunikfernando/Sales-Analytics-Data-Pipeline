@@ -78,6 +78,7 @@ services:
     <<: *airflow-common
     command: webserver
     ports:
+    # host:container
       # - "8081:8080"
       - "8080:8080"
 

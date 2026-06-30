@@ -15,10 +15,8 @@ from cosmos import DbtTaskGroup
 from cosmos.config import ProjectConfig, ProfileConfig, ExecutionConfig
 from cosmos.profiles import SnowflakeUserPasswordProfileMapping
 
-# -----------------------------------
-# ALERTING
-# -----------------------------------
 
+# ALERTING
 def alert_on_failure(context):
     """Custom failure alert - sends email and logs details."""
     task_instance = context.get("task_instance")
@@ -50,15 +48,14 @@ def alert_on_failure(context):
         logging.error(f"Failed to send alert email: {e}")
 
 
-# -----------------------------------
-# DEFAULT ARGS
-# -----------------------------------
 
+# DEFAULT ARGS
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
     "retries": 2,
-    "retry_delay": timedelta(minutes=5),
+    # "retry_delay": timedelta(minutes=5),
+    "retry_delay": timedelta(seconds=30),
 
     # Email alerts
     "email": ["ALERT_EMAIL"],
@@ -71,10 +68,7 @@ default_args = {
     "execution_timeout": timedelta(minutes=30)
 }
 
-# -----------------------------------
 # DAG
-# -----------------------------------
-
 with DAG(
     dag_id="retail_sales_cosmos_pipeline",
     description="Retail Sales Pipeline with Cosmos + dbt",

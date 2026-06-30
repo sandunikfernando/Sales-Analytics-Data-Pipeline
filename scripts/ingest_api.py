@@ -3,7 +3,6 @@ import logging
 import requests
 import pandas as pd
 
-
 from datetime import datetime, timezone
 from dotenv import load_dotenv
 
@@ -11,15 +10,11 @@ import snowflake.connector
 from snowflake.connector.pandas_tools import write_pandas
 
 
-# ---------------------------------------------------
+
 # LOAD ENV VARIABLES
-# ---------------------------------------------------
 load_dotenv()
 
-
-# ---------------------------------------------------
 # LOGGER
-# ---------------------------------------------------
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
@@ -28,9 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ---------------------------------------------------
 # EXPECTED SCHEMA
-# ---------------------------------------------------
 EXPECTED_CART_COLUMNS = [
     "cart_id",
     "user_id",
@@ -54,9 +47,7 @@ EXPECTED_PRODUCT_COLUMNS = [
 ]
 
 
-# ---------------------------------------------------
 # SNOWFLAKE CONNECTION
-# ---------------------------------------------------
 def get_snowflake_connection():
 
     account = os.getenv("SNOWFLAKE_ACCOUNT")
@@ -67,7 +58,7 @@ def get_snowflake_connection():
     schema = os.getenv("SNOWFLAKE_SCHEMA")
     role = os.getenv("SNOWFLAKE_ROLE")
 
-    # SAFETY CHECK (IMPORTANT)
+   
     if not account:
         raise ValueError("SNOWFLAKE_ACCOUNT is not set in environment variables")
 
@@ -82,9 +73,8 @@ def get_snowflake_connection():
     )
 
 
-# ---------------------------------------------------
+
 # EXTRACT
-# ---------------------------------------------------
 def extract_data():
 
     API_URL = os.getenv("API_URL")
@@ -101,9 +91,7 @@ def extract_data():
     return data
 
 
-# ---------------------------------------------------
 # TRANSFORM
-# ---------------------------------------------------
 def transform_data(data, load_timestamp):
 
     logger.info("Transforming data")
@@ -142,9 +130,7 @@ def transform_data(data, load_timestamp):
     return pd.DataFrame(cart_rows), pd.DataFrame(product_rows)
 
 
-# ---------------------------------------------------
 # VALIDATION
-# ---------------------------------------------------
 def validate_schema(carts_df, products_df):
 
     if set(EXPECTED_CART_COLUMNS) != set(carts_df.columns):
@@ -160,9 +146,7 @@ def validate_schema(carts_df, products_df):
     logger.info("Schema validation passed")
 
 
-# ---------------------------------------------------
 # LOAD TO SNOWFLAKE
-# ---------------------------------------------------
 def load_to_snowflake(carts_df, products_df):
 
     conn = None
@@ -204,9 +188,7 @@ def load_to_snowflake(carts_df, products_df):
             logger.info("Snowflake connection closed")
 
 
-# ---------------------------------------------------
 # MAIN
-# ---------------------------------------------------
 def main():
 
     logger.info("Pipeline started")
@@ -224,8 +206,6 @@ def main():
     logger.info("Pipeline completed successfully")
 
 
-# ---------------------------------------------------
 # RUN
-# ---------------------------------------------------
 if __name__ == "__main__":
     main()
