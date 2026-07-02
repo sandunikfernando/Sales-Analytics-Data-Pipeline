@@ -40,7 +40,7 @@ def alert_on_failure(context):
 
     try:
         send_email(
-            to=["sandunifdo28@gmail.com"],
+            to=["ALERT_EMAIL_TO"],
             subject=subject,
             html_content=body
         )
@@ -58,7 +58,7 @@ default_args = {
     "retry_delay": timedelta(seconds=30),
 
     # Email alerts
-    "email": ["ALERT_EMAIL"],
+    "email": ["ALERT_EMAIL_TO"],
     "email_on_failure": True,
     "email_on_retry": False,
 
