@@ -1,3 +1,4 @@
+import os
 import sys
 import logging
 from datetime import datetime, timedelta
@@ -40,7 +41,7 @@ def alert_on_failure(context):
 
     try:
         send_email(
-            to=["ALERT_EMAIL_TO"],
+            to=[os.getenv("ALERT_EMAIL")],
             subject=subject,
             html_content=body
         )
@@ -58,7 +59,7 @@ default_args = {
     "retry_delay": timedelta(seconds=30),
 
     # Email alerts
-    "email": ["ALERT_EMAIL_TO"],
+    "email": [os.getenv("ALERT_EMAIL")],
     "email_on_failure": True,
     "email_on_retry": False,
 
