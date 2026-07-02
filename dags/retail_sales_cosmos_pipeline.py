@@ -104,3 +104,4 @@ with DAG(
     )
 
     create_tables_task >> ingest_raw_data_task >> dbt_transformations
+

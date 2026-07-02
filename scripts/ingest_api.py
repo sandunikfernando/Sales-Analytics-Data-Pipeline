@@ -166,7 +166,9 @@ def load_to_snowflake(carts_df, products_df):
             conn,
             carts_df,
             table_name="RAW_CARTS",
-            schema="RAW"
+            schema="RAW",
+            overwrite=True
+
         )
 
         logger.info(f"RAW_CARTS loaded: {success1}, rows={rows1}")
@@ -177,8 +179,10 @@ def load_to_snowflake(carts_df, products_df):
             conn,
             products_df,
             table_name="RAW_CART_PRODUCTS",
-            schema="RAW"
+            schema="RAW",
+            overwrite=True
         )
+    
 
         logger.info(f"RAW_CART_PRODUCTS loaded: {success2}, rows={rows2}")
 
