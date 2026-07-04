@@ -45,11 +45,11 @@ The pipeline follows a modular and scalable architecture commonly used in real-w
 
 
 ## How to Run
-Clone this repo
-Copy .env.example to .env and fill in your Snowflake credentials
-Run docker compose up
-Open http://localhost:8080 (user: airflow, pass: airflow)
-Toggle on retail_sales_cosmos_pipeline and trigger it
+- Clone this repository
+- Copy `.env.example` to `.env` and fill in your Snowflake credentials
+- Run `docker compose up`
+- Open `http://localhost:8080` (Username: `airflow`, Password: `airflow`)
+- Toggle on `retail_sales_cosmos_pipeline` and trigger it
 
 
 
