@@ -37,44 +37,19 @@ The pipeline follows a modular and scalable architecture commonly used in real-w
 - Implement industry-standard project structure  
 
 
-
 ## Project Structure
+dags/ — Airflow DAG definition
+retail_sales_dbt/models/staging/ — Cleaning models
+retail_sales_dbt/models/mart/ — Analytics models
+scripts/ — Raw table DDL SQL & RAW data ingestion
 
-Retail Sales Analytics Data Pipeline/
-│
-├── dags/
-| ├── retail_sales_cosmos_pipeline.py
-|
-├── scripts/
-│ ├── create_raw_tables.py
-│ └── ingest_api.py
-| └── test_api.py
-| └── test_env.py
-| └── test_snowflake.py
-│
-├── retail_sales_dbt/
-│ ├── models/
-│ │ ├── staging/
-│ │ | ├── stg_cart_products.sql
-| | | └──stg_carts.sql
-│ │ └── marts/
-│ │ | ├── dim_product.sql
-| | | └── dim_user.sql
-| | | └── fct_cart_items.sql
-│ │ ├── schema.yml
-│ │ ├── sources.yml
-│ ├── profiles.yml
-│ └── dbt_project.yml
-│
-├── docker-cmpose.yml
-├── Dockerfile
-├── logs/
-├── dashboards/
-├── docs/
-| ├──raw_data_model.md
-└── requirements.txt
-└── README.md
 
+## How to Run
+Clone this repo
+Copy .env.example to .env and fill in your Snowflake credentials
+Run docker compose up
+Open http://localhost:8080 (user: airflow, pass: airflow)
+Toggle on retail_sales_cosmos_pipeline and trigger it
 
 
 
