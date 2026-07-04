@@ -19,7 +19,7 @@ The pipeline follows a modular and scalable architecture commonly used in real-w
 
 
 
-## 🏗️ Architecture
+## Architecture
 
 <img width="996" height="481" alt="image" src="https://github.com/user-attachments/assets/d39fed04-0960-4b06-aa58-fb8339d363c0" />
 
@@ -38,10 +38,10 @@ The pipeline follows a modular and scalable architecture commonly used in real-w
 
 
 ## Project Structure
-dags/ — Airflow DAG definition
-retail_sales_dbt/models/staging/ — Cleaning models
-retail_sales_dbt/models/mart/ — Analytics models
-scripts/ — Raw table DDL SQL & RAW data ingestion
+- `dags/` — Airflow DAG definition
+- `retail_sales_dbt/models/staging/` — Cleaning models
+- `retail_sales_dbt/models/mart/` — Analytics models
+- `scripts/` — Raw table DDL SQL & raw data ingestion
 
 
 ## How to Run
