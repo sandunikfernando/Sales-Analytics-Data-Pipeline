@@ -167,7 +167,7 @@ def load_to_snowflake(carts_df, products_df):
             carts_df,
             table_name="RAW_CARTS",
             schema="RAW",
-            overwrite=True
+            overwrite=True #to avoid duplicates
 
         )
 
